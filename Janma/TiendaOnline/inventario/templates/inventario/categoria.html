@@ -1,0 +1,45 @@
+{% extends 'administracion/index.html' %}
+
+
+
+{% block h1 %}
+
+{% if obj %} Editar una categoría {% else %} Agregar nueva categoria {% endif %}
+
+{% endblock h1 %}
+
+{% block content %}
+    <form method="POST" class="form-inline">
+        {% csrf_token %}
+        <div class="col mb-5">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                {% if obj %} Editar Categoría {% else %} Nueva Categoría {% endif %}
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        {{form}}
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-danger"><span class="fa fa-save"></span></span>Guardar</button>
+                                    <a href="{% url 'inventario:categorias' %}" class="btn btn-success"><span class="fa fa-undo">Cancelar</span> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
